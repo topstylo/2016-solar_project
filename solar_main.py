@@ -111,11 +111,12 @@ def main():
     global time_speed
     global space
     global start_button
-
+    global root
     print('Modelling started!')
     physical_time = 0
     root = tkinter.Tk()
     # космическое пространство отображается на холсте типа Canvas
+
     space = tkinter.Canvas(root, width=window_width, height=window_height, bg="black")
     space.pack(side=tkinter.TOP)
     # нижняя панель с кнопками
@@ -143,7 +144,11 @@ def main():
     time_label = tkinter.Label(frame, textvariable=displayed_time, width=30)
     time_label.pack(side=tkinter.RIGHT)
 
+
+
+    print(time_step)
     root.mainloop()
+    print(time_step)
     graph()
     print('Modelling finished!')
 

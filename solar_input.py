@@ -1,6 +1,7 @@
 from solar_objects import Star, Planet
 import matplotlib.pyplot as plt
 import numpy as np
+import pylab
 
 
 def read_space_objects_data_from_file(input_filename):
@@ -113,6 +114,7 @@ def data(space_objects, dt):
 
 
 def graph():
+    plt.figure(figsize=(8, 6), dpi=100)
     input_data = []
     speed = []
     distance = []
@@ -124,21 +126,31 @@ def graph():
         speed.append(np.log(int(float(input_data[i][0]))) / np.log(10))
         distance.append(np.log(int(float(input_data[i][1]))) / np.log(10))
         time.append(np.log(int(float(input_data[i][2]))) / np.log(10))
+
     plt.subplot(221)
     plt.plot(time, speed)
+    plt.rcParams['axes.titley'] = 1.0  # y is in axes-relative coordinates.
+    plt.rcParams['axes.titlepad'] = -14
+
     plt.xlabel(r'$log_{10} t$')
     plt.ylabel(r'$log_{10} Vx$')
-    plt.title('Модуль скорости от времени')
+    plt.title('Модуль скорости от времени', fontsize = 10)
     plt.subplot(222)
     plt.plot(time, distance)
+    plt.rcParams['axes.titley'] = 1.0  # y is in axes-relative coordinates.
+    plt.rcParams['axes.titlepad'] = -14
+
     plt.xlabel(r'$log_{10} t$')
     plt.ylabel(r'$log_{10} S$')
-    plt.title('Расстояние от времени')
+    plt.title('Расстояние от времени', fontsize = 10)
     plt.subplot(223)
     plt.plot(distance, speed)
+    plt.rcParams['axes.titley'] = 1.0  # y is in axes-relative coordinates.
+    plt.rcParams['axes.titlepad'] = -14
+
     plt.xlabel(r'$log_{10} S$')
     plt.ylabel(r'$log_{10} Vx$')
-    plt.title('Модуль скорости от расстояния')
+    plt.title('Модуль скорости от расстояния', fontsize = 10)
     plt.subplots_adjust(hspace=0.552, wspace=0.574, top=0.952)
     plt.savefig('graph.png')
     plt.show()
